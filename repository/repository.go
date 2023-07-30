@@ -5,19 +5,10 @@ import (
 	"salamander-smtp/database"
 	"salamander-smtp/logging"
 	"salamander-smtp/models"
+	"strings"
+
+	"gorm.io/gorm"
 )
-
-func GetUnverifiedUsers() (error, []models.SalamanderUser) {
-	var users []models.SalamanderUser
-	db := database.FetchDB()
-
-	err := db.Model(&users).Where("status = ?", "notVerified").Find(&users).Error
-	if err != nil {
-		logging.Log(fmt.Sprintf("Error fetching unverified users: %s", err))
-		return err, []models.SalamanderUser{}
-	}
-	return err, users
-}
 
 func GenerateHTML() (error, string) {
 	db := database.FetchDB()
@@ -29,4 +20,20 @@ func GenerateHTML() (error, string) {
 	}
 
 	return nil, template.HTML
+}
+
+func GetUserByEmail(email string, db *gorm.DB) (models.SalamanderUser, error) {
+	var user models.SalamanderUser
+	err := db.Model(&models.SalamanderUser{}).Where("email = ?", email).Find(&user).Error
+	if err != nil {
+		logging.Log(fmt.Sprintf("Error fetching user: %s", err))
+		return models.SalamanderUser{}, err
+	}
+	return user, nil
+}
+
+func ProcessHTMLTemplate(html string, user models.SalamanderUser) string {
+	href := fmt.Sprintf(`<a href="http://localhost:3000/verify/email/%s/v_code/%s">Verify Account</a>`, user.Email, user.VerificationCode)
+	processedHTML := strings.ReplaceAll(html, "{{.}}", href)
+	return processedHTML
 }

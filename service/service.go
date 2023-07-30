@@ -17,9 +17,7 @@ func SendEmail(to []string, html string) error {
 		return err
 	}
 	from := os.Getenv("SMTP_FROM")
-
 	m := mail.NewMessage()
-
 	m.SetHeader("From", from)
 	m.SetHeader("To", to...)
 	m.SetHeader("Subject", "Verify Email!")

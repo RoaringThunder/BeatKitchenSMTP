@@ -1,0 +1,4 @@
+2023/07/29 03:00:40 Error fetching user: ERROR: column "uid" does not exist (SQLSTATE 42703)
+2023/07/29 03:01:57 Error updating user: ERROR: column "vcode_stamp" of relation "smdr_user" does not exist (SQLSTATE 42703)
+2023/07/30 05:43:39 Error fetching user: read tcp 192.168.8.160:49907->35.178.146.205:5432: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
+2023/07/30 05:43:39 Error fetching template: failed to connect to `host=the-thunder-dome.cgnf59bnua7w.eu-west-2.rds.amazonaws.com user=postgres database=sd-api`: hostname resolving error (lookup the-thunder-dome.cgnf59bnua7w.eu-west-2.rds.amazonaws.com: no such host)
