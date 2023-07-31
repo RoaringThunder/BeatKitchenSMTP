@@ -15,7 +15,8 @@ import (
 func init() {
 	err := database.InitializeThunderDome()
 	if err != nil {
-		log.Fatal(err)
+		logging.Log(err.Error())
+		return
 	}
 	fmt.Println("Welllcomeeee to the Thunderrrrr Dome!")
 

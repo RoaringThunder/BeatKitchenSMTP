@@ -2,3 +2,570 @@
 2023/07/29 03:01:57 Error updating user: ERROR: column "vcode_stamp" of relation "smdr_user" does not exist (SQLSTATE 42703)
 2023/07/30 05:43:39 Error fetching user: read tcp 192.168.8.160:49907->35.178.146.205:5432: wsarecv: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.
 2023/07/30 05:43:39 Error fetching template: failed to connect to `host=the-thunder-dome.cgnf59bnua7w.eu-west-2.rds.amazonaws.com user=postgres database=sd-api`: hostname resolving error (lookup the-thunder-dome.cgnf59bnua7w.eu-west-2.rds.amazonaws.com: no such host)
+2023/07/31 02:18:52 Failed to create verification email event: ERROR: INSERT has more expressions than target columns (SQLSTATE 42601)
+2023/07/31 02:18:54 Failed to create verification email event: ERROR: INSERT has more expressions than target columns (SQLSTATE 42601)
+2023/07/31 02:26:19 http: panic serving 127.0.0.1:50058: runtime error: invalid memory address or nil pointer dereference
+goroutine 24 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc0002b7eb0?, 0x1, 0x1}, {0xc000157200, 0x40}, {0xc0002dae00, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0002d6c40}, 0xc0002fa540?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc0002aa600?, {0x1012fb0?, 0xc0002d6c40?}, 0xc000104ea0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0002d6c40}, 0xc0002aa500)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0002d6c40}, 0xc0002aa500)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc00027e2a0?}, {0x1012fb0, 0xc0002d6c40}, 0xc0002aa500)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0001550e0, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:26:21 http: panic serving 127.0.0.1:50060: runtime error: invalid memory address or nil pointer dereference
+goroutine 39 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc00050ca30?, 0x1, 0x1}, {0xc000156540, 0x40}, {0xc0002dd800, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0002d60e0}, 0xc0002fa630?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc0002aa000?, {0x1012fb0?, 0xc0002d60e0?}, 0x897773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0002d60e0}, 0xc000278500)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0002d60e0}, 0xc000278500)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc00027eb40?}, {0x1012fb0, 0xc0002d60e0}, 0xc000278500)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0003083f0, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:26:24 http: panic serving 127.0.0.1:50074: runtime error: invalid memory address or nil pointer dereference
+goroutine 52 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc0003ba340?, 0x1, 0x1}, {0xc00039a1c0, 0x40}, {0xc000424000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0000ee000}, 0xc0003bc120?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc000278000?, {0x1012fb0?, 0xc0000ee000?}, 0x897773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0000ee000}, 0xc0002aa400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0000ee000}, 0xc0002aa400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc00040eb40?}, {0x1012fb0, 0xc0000ee000}, 0xc0002aa400)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000308000, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:27:24 http: panic serving 127.0.0.1:50149: runtime error: invalid memory address or nil pointer dereference
+goroutine 82 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc000324340?, 0x1, 0x1}, {0xc000486100, 0x40}, {0xc00016c700, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0002d6ee0}, 0xc0000fe090?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc0002aab00?, {0x1012fb0?, 0xc0002d6ee0?}, 0x100c00034e820?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0002d6ee0}, 0xc0002aaa00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0002d6ee0}, 0xc0002aaa00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc0000a7dd0?}, {0x1012fb0, 0xc0002d6ee0}, 0xc0002aaa00)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000154480, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:27:26 http: panic serving 127.0.0.1:50150: runtime error: invalid memory address or nil pointer dereference
+goroutine 84 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc0003ba830?, 0x1, 0x1}, {0xc00039a500, 0x40}, {0xc000425500, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0000ee0e0}, 0xc0003bd500?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc000278300?, {0x1012fb0?, 0xc0000ee0e0?}, 0x100c000232b60?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0000ee0e0}, 0xc0002aad00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0000ee0e0}, 0xc0002aad00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc0000fe840?}, {0x1012fb0, 0xc0000ee0e0}, 0xc0002aad00)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0001546c0, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:27:29 http: panic serving 127.0.0.1:50159: runtime error: invalid memory address or nil pointer dereference
+goroutine 100 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xe81d60, 0x13ce950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc000073360?, 0x1, 0x1}, {0xc000157b80, 0x40}, {0xc00008d100, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1012fb0, 0xc0002d70a0}, 0xc0000fed50?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc0002aaf00?, {0x1012fb0?, 0xc0002d70a0?}, 0x100c000232b60?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1012fb0, 0xc0002d70a0}, 0xc0002aae00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1012fb0, 0xc0002d70a0}, 0xc0002aae00)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc0000fe960?}, {0x1012fb0, 0xc0002d70a0}, 0xc0002aae00)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0000dcb40, {0x10136f8, 0xc00029c0f0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:28:12 http: panic serving 127.0.0.1:50220: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1221d60, 0x176e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc0003087b0?, 0x1, 0x1}, {0xc00022e240, 0x40}, {0xc00031a000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x13b2ff0, 0xc000260000}, 0xc000218cf0?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc000252100?, {0x13b2ff0?, 0xc000260000?}, 0xc37773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000000840, {0x13b2ff0, 0xc000260000}, 0xc000252000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000dd050, {0x13b2ff0, 0xc000260000}, 0xc000252000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc000218b70?}, {0x13b2ff0, 0xc000260000}, 0xc000252000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0000dd0e0, {0x13b3738, 0xc0001ff170})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:28:15 http: panic serving 127.0.0.1:50226: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1221d60, 0x176e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc000213360?, 0x1, 0x1}, {0xc00022e440, 0x40}, {0xc000402000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:40 +0x60c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x13b2ff0, 0xc000260380}, 0xc000219c20?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc000252500?, {0x13b2ff0?, 0xc000260380?}, 0x100c0001b51e0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000000840, {0x13b2ff0, 0xc000260380}, 0xc000252400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000dd050, {0x13b2ff0, 0xc000260380}, 0xc000252400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc000219ad0?}, {0x13b2ff0, 0xc000260380}, 0xc000252400)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0000dd320, {0x13b3738, 0xc0001ff170})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:29:51 http: panic serving 127.0.0.1:50368: runtime error: invalid memory address or nil pointer dereference
+goroutine 5 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1511d60, 0x1a5e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc00030b070?, 0x1, 0x1}, {0xc000328240, 0x40}, {0xc000388000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:36 +0x56c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x16a3010, 0xc000360000}, 0xc000312cf0?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc000352100?, {0x16a3010?, 0xc000360000?}, 0xf27773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000003c0, {0x16a3010, 0xc000360000}, 0xc000352000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000aeb40, {0x16a3010, 0xc000360000}, 0xc000352000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc000312b70?}, {0x16a3010, 0xc000360000}, 0xc000352000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0000aebd0, {0x16a3758, 0xc0000d00c0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:29:54 http: panic serving 127.0.0.1:50374: runtime error: invalid memory address or nil pointer dereference
+goroutine 40 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1511d60, 0x1a5e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc00022d490?, 0x1, 0x1}, {0xc000125cc0, 0x40}, {0xc0002b6000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:36 +0x56c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x16a3010, 0xc000194380}, 0xc0002672c0?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc0002aa200?, {0x16a3010?, 0xc000194380?}, 0x100c000069ba0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0000003c0, {0x16a3010, 0xc000194380}, 0xc0002aa100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000aeb40, {0x16a3010, 0xc000194380}, 0xc0002aa100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc000267170?}, {0x16a3010, 0xc000194380}, 0xc0002aa100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0003147e0, {0x16a3758, 0xc0000d00c0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:32:59 http: panic serving 127.0.0.1:50581: runtime error: invalid memory address or nil pointer dereference
+goroutine 18 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xfe1d60, 0x152e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc0002882f0?, 0x1, 0x1}, {0xc00029c040, 0x40}, {0xc0002d8000, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:36 +0x56c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1173010, 0xc0000ee380}, 0xc000237dd0?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc00027a100?, {0x1173010?, 0xc0000ee380?}, 0xc000276800?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1173010, 0xc0000ee380}, 0xc00027a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1173010, 0xc0000ee380}, 0xc00027a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc000237c50?}, {0x1173010, 0xc0000ee380}, 0xc00027a000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000154bd0, {0x1173758, 0xc00017e090})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 02:33:01 http: panic serving 127.0.0.1:50590: runtime error: invalid memory address or nil pointer dereference
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xfe1d60, 0x152e950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/service.SendEmail({0xc000289e10?, 0x1, 0x1}, {0xc00029cc80, 0x40}, {0xc00041fc00, 0x670})
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/service/service.go:36 +0x56c
+salamander-smtp/controllers/verification.SendVerificationEmail({0x1173010, 0xc0002baee0}, 0xc00040d2c0?)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:51 +0x17c
+net/http.HandlerFunc.ServeHTTP(0xc00028e300?, {0x1173010?, 0xc0002baee0?}, 0x100c000104ea0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0x1173010, 0xc0002baee0}, 0xc00028e200)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0x1173010, 0xc0002baee0}, 0xc00028e200)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc00040d170?}, {0x1173010, 0xc0002baee0}, 0xc00028e200)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000154c60, {0x1173758, 0xc00017e090})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:39:49 http: panic serving 127.0.0.1:58149: runtime error: invalid memory address or nil pointer dereference
+goroutine 67 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc0000ef5e0}, 0xc00026ca00)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc00026c900?, {0x1302fb0?, 0xc0000ef5e0?}, 0x100c0002ccea0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc0000ef5e0}, 0xc00026c800)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc0000ef5e0}, 0xc00026c800)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc0000ef5e0}, 0xc00026c800)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00011d200, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:15 http: panic serving 127.0.0.1:58393: runtime error: invalid memory address or nil pointer dereference
+goroutine 78 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc0000ee0e0}, 0xc000324300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc000324200?, {0x1302fb0?, 0xc0000ee0e0?}, 0x101c00044eea0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc0000ee0e0}, 0xc00026c300)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc0000ee0e0}, 0xc00026c300)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc0000ee0e0}, 0xc00026c300)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00011c2d0, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:15 http: panic serving 127.0.0.1:58394: runtime error: invalid memory address or nil pointer dereference
+goroutine 79 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc00037a0e0}, 0xc000118800)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc000118700?, {0x1302fb0?, 0xc00037a0e0?}, 0x101c00044f040?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc00037a0e0}, 0xc000396000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc00037a0e0}, 0xc000396000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc00037a0e0}, 0xc000396000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00011c360, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:15 http: panic serving 127.0.0.1:58395: runtime error: invalid memory address or nil pointer dereference
+goroutine 80 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc0000ec000}, 0xc0000f2100)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc0000f2000?, {0x1302fb0?, 0xc0000ec000?}, 0xb87773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc0000ec000}, 0xc00026c400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc0000ec000}, 0xc00026c400)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc0000ec000}, 0xc00026c400)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00011c3f0, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:15 http: panic serving 127.0.0.1:58392: runtime error: invalid memory address or nil pointer dereference
+goroutine 57 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc0003ac000}, 0xc000396200)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc000396100?, {0x1302fb0?, 0xc0003ac000?}, 0xb87773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc0003ac000}, 0xc000118600)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc0003ac000}, 0xc000118600)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc0003ac000}, 0xc000118600)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0002942d0, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:56 http: panic serving 127.0.0.1:58469: runtime error: invalid memory address or nil pointer dereference
+goroutine 107 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc0000ec2a0}, 0xc000118900)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc000118800?, {0x1302fb0?, 0xc0000ec2a0?}, 0x100c00038a340?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc0000ec2a0}, 0xc00026c000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc0000ec2a0}, 0xc00026c000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc0000ec2a0}, 0xc00026c000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00011c360, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:41:56 http: panic serving 127.0.0.1:58468: runtime error: invalid memory address or nil pointer dereference
+goroutine 131 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1171d60, 0x16be950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1302fb0, 0xc00023c000}, 0xc00026c300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc00026c100?, {0x1302fb0?, 0xc00023c000?}, 0xb87773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002f0300, {0x1302fb0, 0xc00023c000}, 0xc000118700)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000294ea0, {0x1302fb0, 0xc00023c000}, 0xc000118700)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x13011a0?}, {0x1302fb0, 0xc00023c000}, 0xc000118700)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc0000dc240, {0x13036f8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:46:25 http: panic serving 127.0.0.1:58827: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x981d60, 0xece950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0xb12fb0, 0xc0000ee460}, 0xc00027a200)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:107 +0x5b8
+net/http.HandlerFunc.ServeHTTP(0xc00027a100?, {0xb12fb0?, 0xc0000ee460?}, 0x100c000230340?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00014a300, {0xb12fb0, 0xc0000ee460}, 0xc00027a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00013eb40, {0xb12fb0, 0xc0000ee460}, 0xc00027a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xb111a0?}, {0xb12fb0, 0xc0000ee460}, 0xc00027a000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00029e000, {0xb136f8, 0xc000170090})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:47:44 http: panic serving 127.0.0.1:58939: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xd32d60, 0x127f950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0xec40d0, 0xc00021a2a0}, 0xc000316300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x60a
+net/http.HandlerFunc.ServeHTTP(0xc000316200?, {0xec40d0?, 0xc00021a2a0?}, 0x100c000204340?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000000840, {0xec40d0, 0xc00021a2a0}, 0xc000316100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000dcfc0, {0xec40d0, 0xc00021a2a0}, 0xc000316100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xec22c0?}, {0xec40d0, 0xc00021a2a0}, 0xc000316100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00029e000, {0xec4818, 0xc0001c1bc0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:48:20 http: panic serving 127.0.0.1:59006: runtime error: invalid memory address or nil pointer dereference
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xcb2d60, 0x11ff950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0xe440d0, 0xc0000ee460}, 0xc000278300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x60a
+net/http.HandlerFunc.ServeHTTP(0xc000278200?, {0xe440d0?, 0xc0000ee460?}, 0x100c000105040?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00015e300, {0xe440d0, 0xc0000ee460}, 0xc000278100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000154b40, {0xe440d0, 0xc0000ee460}, 0xc000278100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xe422c0?}, {0xe440d0, 0xc0000ee460}, 0xc000278100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000154c60, {0xe44818, 0xc00017e090})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:49:44 http: panic serving 127.0.0.1:59120: runtime error: invalid memory address or nil pointer dereference
+goroutine 23 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x1591d60, 0x1ade950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1722ff0, 0xc0000c00e0}, 0xc0000bc300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x64a
+net/http.HandlerFunc.ServeHTTP(0xc0000bc200?, {0x1722ff0?, 0xc0000c00e0?}, 0x100c000105a00?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc00019e480, {0x1722ff0, 0xc0000c00e0}, 0xc0000bc100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc000182e10, {0x1722ff0, 0xc0000c00e0}, 0xc0000bc100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x17211e0?}, {0x1722ff0, 0xc0000c00e0}, 0xc0000bc100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000182f30, {0x1723738, 0xc0002ba780})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:51:30 Failed to update verification email event: failed to encode args[1]: unable to encode 1690771889 into binary format for timestamptz (OID 1184): cannot find encode plan
+2023/07/31 03:52:42 http: panic serving 127.0.0.1:59380: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x891e40, 0xdde950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0xa23110, 0xc0002b8620}, 0xc00038a300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x65b
+net/http.HandlerFunc.ServeHTTP(0xc00038a200?, {0xa23110?, 0xc0002b8620?}, 0x100c0001b0680?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc0002de300, {0xa23110, 0xc0002b8620}, 0xc00038a100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0002d2630, {0xa23110, 0xc0002b8620}, 0xc00038a100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xa21300?}, {0xa23110, 0xc0002b8620}, 0xc00038a100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000214000, {0xa23858, 0xc00028d920})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:54:42 http: panic serving 127.0.0.1:59556: runtime error: invalid memory address or nil pointer dereference
+goroutine 19 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0x13a1e00, 0x18ee950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x15330d0, 0xc0000ee9a0}, 0xc0002a0300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x65b
+net/http.HandlerFunc.ServeHTTP(0xc0002a0200?, {0x15330d0?, 0xc0000ee9a0?}, 0x100c0001041a0?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000000840, {0x15330d0, 0xc0000ee9a0}, 0xc0002a0100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc0000dd4d0, {0x15330d0, 0xc0000ee9a0}, 0xc0002a0100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x15312c0?}, {0x15330d0, 0xc0000ee9a0}, 0xc0002a0100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc00010c120, {0x1533818, 0xc00027fcb0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:56:14 http: panic serving 127.0.0.1:59680: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xaa1e00, 0xfee950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0xc33110, 0xc00017a000}, 0xc00016a200)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x65b
+net/http.HandlerFunc.ServeHTTP(0xc00016a100?, {0xc33110?, 0xc00017a000?}, 0x4b7773?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000154000, {0xc33110, 0xc00017a000}, 0xc00016a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00011a360, {0xc33110, 0xc00017a000}, 0xc00016a000)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0xc31300?}, {0xc33110, 0xc00017a000}, 0xc00016a000)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000396000, {0xc33858, 0xc000118ed0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed
+2023/07/31 03:58:24 http: panic serving 127.0.0.1:59787: runtime error: invalid memory address or nil pointer dereference
+goroutine 34 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1854 +0xbf
+panic({0xf72e00, 0x14bf950})
+	C:/Program Files/Go/src/runtime/panic.go:890 +0x263
+salamander-smtp/controllers/verification.VerifyUser({0x1104170, 0xc0000ee460}, 0xc00026c300)
+	C:/Users/eoinh/Programming/Playground/GoLang/salamander-smtp/controllers/verification/verification.go:108 +0x782
+net/http.HandlerFunc.ServeHTTP(0xc00026c200?, {0x1104170?, 0xc0000ee460?}, 0x100c000230340?)
+	C:/Program Files/Go/src/net/http/server.go:2122 +0x2f
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc000170300, {0x1104170, 0xc0000ee460}, 0xc00026c100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go:210 +0x1cf
+github.com/gorilla/handlers.(*cors).ServeHTTP(0xc00011aea0, {0x1104170, 0xc0000ee460}, 0xc00026c100)
+	C:/Users/eoinh/go/pkg/mod/github.com/gorilla/handlers@v1.5.1/cors.go:138 +0x6c2
+net/http.serverHandler.ServeHTTP({0x1102360?}, {0x1104170, 0xc0000ee460}, 0xc00026c100)
+	C:/Program Files/Go/src/net/http/server.go:2936 +0x316
+net/http.(*conn).serve(0xc000296000, {0x11048b8, 0xc000302bd0})
+	C:/Program Files/Go/src/net/http/server.go:1995 +0x612
+created by net/http.(*Server).Serve
+	C:/Program Files/Go/src/net/http/server.go:3089 +0x5ed

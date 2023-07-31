@@ -48,7 +48,7 @@ func SendVerificationEmail(w http.ResponseWriter, r *http.Request) {
 		utils.HTTPHandleError(w, 500, err.Error())
 		return
 	}
-	err = service.SendEmail([]string{user.Email}, processedHTML)
+	err = service.SendEmail([]string{user.Email}, user.VerificationCode, processedHTML)
 	if err != nil {
 		utils.HTTPHandleError(w, 500, err.Error())
 		return
@@ -65,9 +65,10 @@ func VerifyUser(w http.ResponseWriter, r *http.Request) {
 	gormDB := database.FetchDB()
 	var user models.SalamanderUser
 	err := json.NewDecoder(r.Body).Decode(&user)
-	cookie, err := r.Cookie("salamander.api")
-	if err != nil {
-		utils.HTTPHandleError(w, 400, "No cookie")
+	domain := os.Getenv("COOKIE_DOMAIN")
+	cookie, err := r.Cookie(domain)
+	if err != nil || cookie == nil {
+		utils.HTTPHandleError(w, 400, "Please login and try again")
 		return
 	}
 
@@ -75,29 +76,49 @@ func VerifyUser(w http.ResponseWriter, r *http.Request) {
 		return []byte(os.Getenv("SESSION_SECRET")), nil
 	})
 	if err != nil {
-		utils.HTTPHandleError(w, 400, "Error reading cookie")
+		logging.Log("Failed to parse token: " + err.Error())
+		utils.HTTPHandleError(w, 500, "Looks like we're having some issues right now")
 		return
 	}
 	claims, ok := token.Claims.(jwt.MapClaims)
 	if !ok || !token.Valid {
-		utils.HTTPHandleError(w, 400, "Invalid cookie")
+		utils.HTTPHandleError(w, 400, "Please login and try again")
 		return
 	}
 	var dbUser models.SalamanderUser
 	err = gormDB.Model(&models.SalamanderUser{}).Where("email = ?", user.Email).Find(&dbUser).Error
+	if err != nil {
+		logging.Log("Bad verify attempt: " + err.Error())
+		utils.HTTPHandleError(w, 400, "Bad request")
+		return
+	}
 	if !ok || !token.Valid {
 		logging.Log("Couldn't find user: " + user.Email + "Error: " + err.Error())
 		utils.HTTPHandleError(w, 500, "Internal server error")
 		return
 	}
-	if user.Email != claims["iss"] || user.VerificationCode != dbUser.VerificationCode || dbUser.Status == "verified" {
-		fmt.Println(claims["iss"], user.Email)
-		fmt.Println(user.VerificationCode, dbUser.VerificationCode)
+	err = gormDB.Model(&models.VerificationEmailEvent{}).Where("recipient = ? AND  verification_code = ?", user.Email, user.VerificationCode).Updates(map[string]interface{}{"status": "VISITED"}).Error
+	if err != nil {
+		logging.Log("Failed to update verification email event: " + err.Error())
+		utils.HTTPHandleError(w, 500, "Looks like we're having some issues right now")
+		return
+	}
+	fmt.Println(user.Email, "=", claims["iss"], "and!", user.VerificationCode, "=", dbUser.VerificationCode, "and!", dbUser.Status, "!=", "verified")
+	if user.Email != claims["iss"].(string) || user.VerificationCode != dbUser.VerificationCode || dbUser.Status == "verified" {
+		logging.Log("Bad verify attempt: " + err.Error())
 		utils.HTTPHandleError(w, 400, "Bad request")
 		return
 	}
 
-	gormDB.Model(&models.SalamanderUser{}).Where("email = ?", user.Email).Updates(map[string]interface{}{"status": "verified"})
+	fmt.Println(user.Email, user.VerificationCode)
+
+	err = gormDB.Model(&models.SalamanderUser{}).Where("email = ?", user.Email).Updates(map[string]interface{}{"status": "verified"}).Error
+	if err != nil {
+		logging.Log("Failed to verify user: " + err.Error())
+		utils.HTTPHandleError(w, 500, "Looks like we're having some issues right now")
+		return
+	}
+
 	payload := map[string]interface{}{
 		"status":  true,
 		"message": "Welcome to Salamander town!",
@@ -107,7 +128,8 @@ func VerifyUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func getTokenIfValid(r *http.Request) (string, bool, error) {
-	cookie, err := r.Cookie("salamander.api")
+	domain := os.Getenv("COOKIE_DOMAIN")
+	cookie, err := r.Cookie(domain)
 	if err != nil {
 		return "", false, err
 	}

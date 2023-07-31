@@ -32,6 +32,11 @@ func InitializeThunderDome() error {
 	return err
 }
 
+func MigrateVerifiactionEmailEvent() {
+	// gormDB := database.FetchDB()
+	DB.AutoMigrate(&models.VerificationEmailEvent{})
+}
+
 func FetchDB() *gorm.DB {
 	return DB
 }
