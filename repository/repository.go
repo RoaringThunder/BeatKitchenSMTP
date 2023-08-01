@@ -22,12 +22,15 @@ func GenerateHTML() (error, string) {
 	return nil, template.HTML
 }
 
-func GetUserByEmail(email string, db *gorm.DB) (models.SalamanderUser, error) {
+func GetUnverifiedUser(email string, db *gorm.DB) (models.SalamanderUser, error) {
 	var user models.SalamanderUser
 	err := db.Model(&models.SalamanderUser{}).Where("email = ?", email).Find(&user).Error
 	if err != nil {
 		logging.Log(fmt.Sprintf("Error fetching user: %s", err))
 		return models.SalamanderUser{}, err
+	}
+	if user.Status == "VERIFIED" {
+		return models.SalamanderUser{}, fmt.Errorf("User is already verified")
 	}
 	return user, nil
 }

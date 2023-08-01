@@ -36,7 +36,7 @@ func main() {
 	origins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
 	credentials := handlers.AllowCredentials()
 
-	router.HandleFunc("/api/smtp/verify/send-verification", controllers.SendVerificationEmail).Methods("GET")
+	router.HandleFunc("/api/smtp/verify/send-verification/{forceSend}", controllers.SendVerificationEmail).Methods("POST")
 	router.HandleFunc("/api/smtp/verify", controllers.VerifyUser).Methods("POST")
 
 	log.Fatal(http.ListenAndServe("127.0.0.1:10042", handlers.CORS(headers, methods, origins, credentials)(router)))

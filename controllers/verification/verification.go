@@ -13,10 +13,13 @@ import (
 	utils "salamander-smtp/utils/responseUtils"
 
 	"github.com/golang-jwt/jwt/v5"
+	"github.com/gorilla/mux"
 )
 
 func SendVerificationEmail(w http.ResponseWriter, r *http.Request) {
 	issuer, ok, err := getTokenIfValid(r)
+	params := mux.Vars(r)
+	forceSend := params["forceSend"]
 	if err != nil {
 		utils.HTTPHandleError(w, 400, err.Error())
 		return
@@ -33,7 +36,7 @@ func SendVerificationEmail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	user, err := repository.GetUserByEmail(issuer, gormDB)
+	user, err := repository.GetUnverifiedUser(issuer, gormDB)
 	if err != nil {
 		utils.HTTPHandleError(w, 500, err.Error())
 		return
@@ -48,7 +51,7 @@ func SendVerificationEmail(w http.ResponseWriter, r *http.Request) {
 		utils.HTTPHandleError(w, 500, err.Error())
 		return
 	}
-	err = service.SendEmail([]string{user.Email}, user.VerificationCode, processedHTML)
+	err = service.SendEmail([]string{user.Email}, user.VerificationCode, processedHTML, forceSend)
 	if err != nil {
 		utils.HTTPHandleError(w, 500, err.Error())
 		return
