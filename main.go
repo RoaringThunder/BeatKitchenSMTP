@@ -3,15 +3,20 @@ package main
 import (
 	"fmt"
 	"log"
-	"salamander-smtp/app"
+	"net/http"
+	controllers "salamander-smtp/controllers/verification"
 	"salamander-smtp/database"
 	"salamander-smtp/logging"
+
+	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
 )
 
 func init() {
 	err := database.InitializeThunderDome()
 	if err != nil {
-		log.Fatal(err)
+		logging.Log(err.Error())
+		return
 	}
 	fmt.Println("Welllcomeeee to the Thunderrrrr Dome!")
 
@@ -22,11 +27,17 @@ func init() {
 }
 
 func main() {
-	fmt.Println("Hello World")
-	err := app.Run()
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-	return
+	fmt.Println("SMTP is a go!")
+
+	router := mux.NewRouter()
+
+	headers := handlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization", "Access-Control-Allow-Credentials"})
+	methods := handlers.AllowedMethods([]string{"GET", "POST", "PUT", "DELETE"})
+	origins := handlers.AllowedOrigins([]string{"http://localhost:3000"})
+	credentials := handlers.AllowCredentials()
+
+	router.HandleFunc("/api/smtp/verify/send-verification/{forceSend}", controllers.SendVerificationEmail).Methods("POST")
+	router.HandleFunc("/api/smtp/verify", controllers.VerifyUser).Methods("POST")
+
+	log.Fatal(http.ListenAndServe("127.0.0.1:10042", handlers.CORS(headers, methods, origins, credentials)(router)))
 }
